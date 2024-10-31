@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(61, 57, 57);
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.lupin {
+  text-align: center;
+  font-size: 6rem;
+  margin-top: 10vh;
+}
+.game-container {
+  border: 5px solid black;
+  background-color: black;
+  margin: 0 auto;
+  max-width: 720px;
+  display:block;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 10vh;
+  text-align: center;
+  width: 100%;
+  height: 63vh;
+}
+.status-bar {
+  max-width: 500px;
+  /* border: 3px solid rgb(168, 63, 63); */
+  display: none;
+  text-align: center;  justify-content: flex-start;
+  gap: 60px;
+  background-color: white;
+  padding-left: 10px;
+  margin: 15px auto;
+  color: black;
+  width: 50%;
+  position: relative;
+}
+.play-buttons {
+  max-width: 500px;
+  /* border: 3px solid rgb(168, 63, 63); */
+  height: 10vh;
+  width: 75%;
+  position: relative;
+  margin: 0 auto;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.play-btn {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(23, 20, 20);
+  font-weight: 700;
+  border: 2px solid white;
+  border-radius: 10%;
+  max-width: 500px;
+  margin: 5px;
+  height: 30px;
+  width: 100px;
+  /* display: none; */
+}
+/* .steal-btn {
+  display: none;
+} */
+.submit {
+width: 70px;
+margin-left: 10px;
+border-radius: 15%;
+}
+.hideout {
+border-radius: 15%;
+width: 150px;
+display: none;
+}
+.quit {
+  border-radius: 15%;
+  width: 70px;
+  display: none;  
+}
+.text-display {
+  background-color: rgb(164, 156, 156);
+  /* border: 3px solid rgb(168, 63, 63); */
+  height: 15vh;
+  margin: 1rem;
+  padding: 1rem;
+}
+.inventory {
+  /* border: 3px solid rgb(168, 63, 63); */
+  height: 20vh;
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+.inventory-text {
+  background-color: rgb(164, 156, 156);
+  height: 17vh;
+  margin-top: .8rem;
+  font-size: 1.8rem;
+  display: block;
+  flex-wrap: wrap;
+}
+.inv-text {
+  text-align: center;
+  display: none;
+  justify-content: space-evenly;
+  margin: 1.5rem auto 1.2rem auto;
+}
