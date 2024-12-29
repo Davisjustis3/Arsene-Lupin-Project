@@ -107,7 +107,6 @@ body {
 #inventory {
   height: 20vh;
   width: 40%;
-  margin: 0 auto;
   text-align: center;
 }
 #inventory-text {
@@ -115,13 +114,11 @@ body {
   background-color: rgb(164, 156, 156);
   height: 17vh;
   margin-top: 15px;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   display: block;
-  flex-wrap: wrap;
+  overflow-y: scroll;
 }
 .inv-text {
+  margin-top: 10px;
   text-align: center;
-  display: none;
-  justify-content: space-evenly;
-  margin: 1.5rem auto 1.2rem auto;
 }

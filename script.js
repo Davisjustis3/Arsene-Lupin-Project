@@ -8,9 +8,6 @@ let confidence = 0;
 
 let inventory = [];
 
-// const eurosStatus = document.querySelector('.euros');
-// const daysStatus = document.querySelector('.days');
-// const daysLeftStatus = document.querySelector('.days-left');
 const btn1 = document.querySelector('.btn1');
 const btn2 = document.querySelector('.btn2');
 const btn3 = document.querySelector('.btn3');
@@ -157,15 +154,13 @@ function buyWig() {
   const wig = 10;
   if (!inventory.includes('Wig') && euros >= wig && inventory.length < 3) {
     inventory.push('Wig');
+    displayInventory();
     confidence += 10;
     displayConfidence();
     euros -= 10;
     days += .5;
     daysLeft -= .5;
     updateStatus();
-    eurosStatus.innerText = `Euros: ${euros}`
-    inv1.style.display = 'block';
-    inv1.innerText = 'Wig';
     textDisplay.innerText = 'A wig... interesting choice.';
   } else if (inventory.includes('Wig')) {
     textDisplay.innerText = 'You already have a wig you dummy!';
@@ -183,8 +178,7 @@ function stealWig() {
     stealIt();
     if (result) {
       inventory.push('Wig');
-      inv1.style.display = 'block';
-      inv1.innerText = 'Wig';
+      displayInventory();
     } 
   } else if (inventory.includes('Wig') || inventory.length == 3) {
     textDisplay.innerText = "You've got enough! Do something else.";
@@ -194,6 +188,7 @@ function buyClothes() {
   const janitorClothes = 50
   if (!inventory.includes('Janitor Clothes') && euros >= janitorClothes && inventory.length < 3) {
     inventory.push('Janitor Clothes');
+    displayInventory();
     confidence += 50;
     displayConfidence();
     euros -= 50;
@@ -201,8 +196,6 @@ function buyClothes() {
     daysLeft -= .5;
     updateStatus();
     textDisplay.innerText = 'Nice, you got the uniform! Hope it comes in handy';
-    inv2.style.display = 'block';
-    inv2.innerText = 'Janitor Clothes';
   } else if (inventory.includes('Janitor Clothes')) {
     textDisplay.innerText = 'You already have a uniform you dummy!';
   } else if (euros < janitorClothes) {
@@ -220,8 +213,7 @@ function stealClothes() {
     stealIt();
     if (result) {
       inventory.push('Janitor CLothes');
-      inv2.style.display = 'block';
-      inv2.innerText = 'Janitor Clothes ';
+      displayInventory();
     } else if (inventory.includes('Janitor Clothes') || inventory.length == 3) {
       textDisplay.innerText = "You've got a full bag. Do something else!";
     };
@@ -231,6 +223,7 @@ function buySuit() {
   const suit = 50
   if (!inventory.includes('Suit') && euros >= suit && inventory.length < 3) {
     inventory.push('Suit');
+    displayInventory();
     confidence += 50;
     displayConfidence();
     euros -= 50;
@@ -238,8 +231,6 @@ function buySuit() {
     daysLeft -= .5;
     updateStatus();
     textDisplay.innerText = 'You clean up very nice, sir. That is a fine suit.';
-    inv3.style.display = 'block';
-    inv3.innerText = 'Suit';
   } else if (inventory.includes('Suit')) {
     textDisplay.innerText = 'You already have a suit you dummy!';
   } else if (euros < suit) {
@@ -257,8 +248,7 @@ function stealSuit() {
     stealIt();
     if (result) {
       inventory.push('Suit');
-      inv3.style.display = 'block';
-      inv3.innerText = 'Suit';
+      displayInventory();
     }
   } else if (inventory.includes('Suit') || inventory.length == 3) {
     textDisplay.innerText = "Go steal something else!";
@@ -268,6 +258,7 @@ function buySax() {
   const sax = 250
   if (!inventory.includes('Saxophone') && euros >= sax && inventory.length < 3) {
     inventory.push('Saxophone');
+    displayInventory();
     confidence += 150;
     displayConfidence();
     euros -= 250;
@@ -275,8 +266,6 @@ function buySax() {
     daysLeft -= .5;
     updateStatus();
     textDisplay.innerText = "You're going to need a lot of practice to make that thing sound good.";
-    inv4.style.display = 'block';
-    inv4.innerText = 'Saxophone';
   } else if (inventory.includes('Saxophone')) {
     textDisplay.innerText = 'You already have a saxophone you dummy!';
   } else if (euros < suit) {
@@ -294,8 +283,7 @@ function stealReplacementSax() {
     stealIt();
     if (result) {
       inventory.push('Sax');
-      inv4.style.display = 'block';
-      inv4.innerText = 'Sax'; 
+      displayInventory();
     }
   } else if (inventory.includes('Sax') || inventory.length == 3) {
     textDisplay.innerText = "I'm blown away by your ambition, but be SMART ya dummy. Go somewhere else.";
@@ -376,18 +364,14 @@ function highChance() {
       daysLeft -= .5;
       updateStatus();
       return result = false;
-    } 
-}
-
-
-
+  };
+};
 function gameOver() {
   textDisplay.innerText = "GAME OVER";
   inputBar.style.display = 'none';
   submitButton.style.display = 'none';
   document.querySelector('.inventory').style.display = 'none';
-
-}
+};
 function quitJob() {
   inputBar.style.display = 'none';
   submitButton.onclick = gameOver;
@@ -397,14 +381,22 @@ function quitJob() {
   statusBar.style.display = 'none';
   allBtn.style.display = 'none';
   textDisplay.innerText = 'I hope you understand that quitting means trying your luck with DEATH. Surely you can run, but we WILL find you.'
-}
+};
+function displayInventory() {
+  let inventoryHTML = '';
+  inventory.forEach((item) => {
+    inventoryHTML = `
+    <p class="inv-text">${item}</p>
+     `
+  });
+  inventoryText.innerHTML += inventoryHTML;
+};
 function updateStatus() {
   statusBar.innerHTML = `
       <p class="euros">Euros: ${euros}</p>
       <p class="days">Days: ${days}</p>
-      <p class="days-left">Days left: ${daysLeft}</p>
-  `
-}
+      <p class="days-left">Days left: ${daysLeft}</p> `
+};
 function displayConfidence() {
   confidenceContainer.innerHTML = `Confidence: ${confidence}`
-}
+};
