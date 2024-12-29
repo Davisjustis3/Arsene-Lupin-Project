@@ -1,4 +1,4 @@
-let euros = 1000;
+let euros = 200;
 let days = 0;
 let daysLeft = 10;
 // Confidence is the ability to comeplete risky tasks
@@ -83,9 +83,10 @@ function hideoutHome() {
   statusBar.style.display = 'flex';
   quitJobSideButton.style.display = 'inline';
   allBtn.style.display = 'flex';
+  renderTopRowButtons();
   removeSecondRowButtons();
   textDisplay.style.height = '25vh';
-  textDisplay.innerText = "You are in your secret hideout in Paris. Here, you can plan your next heist or go complete small tasks, like going to the store to buy supplies. Hint** you can also steal them. But don't get caught ;). Each tasks gains your confidence and tasks become easier. Add items to your inventory by buying them in the store, but you can only carry 3 things at one time. You'll need certain items to perform specific tasks, so think before you buy. There are three ways to get in: As a janitor, a band member, or a potential buyer. Think critically and good luck!";
+  textDisplay.innerText = "You are in your secret hideout in Paris. Here, you can plan your next heist or go complete small tasks, like going to the store to buy supplies. Hint** you can also steal them. But don't get caught ;). Each tasks gains your confidence and tasks become easier. Add items to your inventory by buying them in the store, but you can only carry 4 things at one time. You'll need certain items to perform specific tasks, so think before you buy. There are three ways to get in: As a janitor, a band member, or a potential buyer. Think critically and good luck!";
   btn1.innerHTML = 'Go to store';
   btn2.innerHTML = 'Go to center';
   btn3.innerHTML = 'Go to club';

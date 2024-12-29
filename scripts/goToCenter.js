@@ -174,6 +174,107 @@ function pregnantPick() {
         goToCenter();
         removeSecondRowButtons();
       }, 6000);
-    }
-}
+  };
+};
 
+function cardScam() {
+  textDisplay.innerHTML = `You set up a table for some card games near Champs-Élysées. This is a hot area. It's risky but the payout and be pretty big. You mess with the wrong guy and you'll be missing out on a lot of cash. These poor tourist are not going to see you coming. You only have 3 attempts. The police start to crack down very quickly. Your attempts: ${attempts}.`
+  removeTopRowButtons();
+  btn2.style.display = 'inline';
+  btn2.onclick = scam;
+  btn3.style.display = 'inline';
+  btn2.innerHTML = 'Do Scam';
+  btn3.innerHTML = 'Go back';
+  btn3.onclick = goToCenter;
+  
+}
+let attemptsScam = 0;
+function scam() {
+  let chances = 0;
+  if (attemptsScam < 3) {
+    chances = Math.random() * 15;
+      if (chances <= 8) {
+      attemptsScam++;
+      euros += 30
+      confidence += 10
+      halfDayWork();
+      updateStatus();
+      textDisplay.innerHTML = `You ripped off some tourists. Simple con. Your attempts: ${attemptsScam}.`
+      } else if (chances == 10) {
+      attemptsScam++;
+      euros -= 50;
+      confidence -= 50;
+      halfDayWork();
+      updateStatus();
+      textDisplay.innerHTML = `You tried to con a con man and he beat you for your money. Tough loss. He took 50 euros from you. Your attempts: ${attemptsScam}.`
+      } else if (chances > 8 && chances !== 10) {
+      attemptsScam++;
+      euros -= 50;
+      confidence -= 50;
+      halfDayWork();
+      updateStatus();
+      textDisplay.innerHTML = `You ran into a cop so you had to get out of there quick. You left some cash on the table. Not a good look. Your attempts: ${attemptsScam}.`
+      };
+    } else if (attemptsScam == 3) {
+      textDisplay.innerHTML = `You've used all of your attempts. Your attempts: ${attemptsScam}.`
+  }
+}
+function blackMarketCam() {
+  removeTopRowButtons();
+  btn2.style.display = 'inline';
+  btn3.style.display = 'inline';
+  btn2.innerHTML = 'Buy Camera';
+  btn2.onclick = buyCamera;
+  btn3.innerHTML = 'Go back'
+  btn3.onclick = goToCenter;
+  
+textDisplay.innerHTML = `This is a Cam jammer that has the capabitlity of shutting off nearby cameras that are within 5 meters. It's not a far reach, so you really need to right under it. Depending on which path you chose, this may benefit you in a certain sitation. It cost 100 euros.`
+}
+function buyCamera() {
+  const camera = 100
+  if (!inventory.includes('Black Market Cam') && euros >= camera && inventory.length < 4) {
+    inventory.push('Black Market Cam');
+    displayInventory();
+    confidence += 30;
+    euros -= 100;
+    halfDayWork();
+    textDisplay.innerHTML = "You added the camera to your inventory."
+  } else if (inventory.includes('Black Market Cam')) {
+    textDisplay.innerText = "It's not wise to use to cam jammers at once. It causes interferance with the other cam jammer.";
+  } else if (euros < camera) {
+    textDisplay.innerText = "You need to go find some money... And you can't steal this. Your buddy is hooking you up.";
+  };
+  setTimeout(() => {
+    hideoutHome();
+  }, 3000);
+};
+function blackMarketCam() {
+  removeTopRowButtons();
+  btn2.style.display = 'inline';
+  btn3.style.display = 'inline';
+  btn2.innerHTML = 'Pay for Service';
+  btn2.onclick = buyFakeProfile;
+  btn3.innerHTML = 'Go back'
+  btn3.onclick = goToCenter;
+  
+textDisplay.innerHTML = `This is a Cam jammer that has the capabitlity of shutting off nearby cameras that are within 5 meters. It's not a far reach, so you really need to right under it. Depending on which path you chose, this may benefit you in a certain sitation. It cost 100 euros.`
+}
+function buildFakeProfile() {
+  const profile = 200
+  if (!inventory.includes('Fake Profile') && euros >= profile && inventory.length < 4) {
+    inventory.push('Fake Profile');
+    displayInventory();
+    confidence += 50;
+    euros -= 200;
+    halfDayWork();
+    fullDayWork();
+    textDisplay.innerHTML = "You paid someone to build you a website."
+  } else if (inventory.includes('Fake Profile')) {
+    textDisplay.innerText = "It's not worth it to pay for this twice.";
+  } else if (euros < profile) {
+    textDisplay.innerText = "You need to go find some money...";
+  };
+  setTimeout(() => {
+    hideoutHome();
+  }, 3000);
+};
