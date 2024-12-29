@@ -83,8 +83,10 @@ width: 150px;
 display: none;
 }
 .quit {
+  border: none;
   border-radius: 15%;
   width: 70px;
+  height: 30px;
   display: none;  
 }
 .text-display {
