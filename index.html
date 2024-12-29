@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="script.js">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <title>Lupin Game</title>
 </head>
 <body>
-  <h1 class="lupin">Lupin:</h1>
-  <div class="game-container">
+  <h1 id="title">Lupin</h1>
+  <h3 id="subtitle">The Gentleman Burglar</h3>
+  <div id="game-container">
     <div id="confidence-container"></div>
-    <div class="status-bar">
-      <p class="euros">Euros: 0</p>
+    <div id="status-bar">
+      <p class="euros">Euros: 200</p>
       <p class="days">Days: 0</p>
       <p class="days-left">Days left: 10</p>
     </div>
-    <div class="play-buttons">
+    <div id="play-buttons-container">
       <button class="play-btn btn1 main-btn"></button>
       <button class="play-btn btn2 main-btn"></button>
       <button class="play-btn btn3 main-btn"></button>
@@ -28,16 +32,19 @@
     </div>
       <div class="text-display"> Hello, Lupin. I am The Autumn Leaves, The Blue in Green, The Witchcraft... and I have been watching you. I've seen you grow from stealing wallets on the train to slithering your way into the Turdeu Jewelry House, pocketting the historic 50-carot Patience diamond just 2 weeks ago. They still have no clue they are displaying 10 grams of glass. But my message reaches you for this important matter. I need you to steal something for me, and there is no one in France that possess your skills. If you accept, reply, "Yes I accept"
     </div>
-     <input type="text" placeholder="Text Here" class="input"><button type="submit" class="submit">Enter</button>
-     <button class="hideout">Back to hideout</button>
-     <button class="quit">QUIT</button>
-     <div class="inventory">
+     <input type="text" placeholder="Text Here" class="input"><button type="submit" id="submit">Enter</button>
+     <button id="hideout">Back to hideout</button>
+     <button id="quit-button">QUIT</button>
+     <div id="inventory">
       <h1>Inventory</h1>
-      <div class="inventory-text">
+      <div id="inventory-text">
         <p class="inv1 inv-text"></p>
         <p class="inv2 inv-text"></p>
         <p class="inv3 inv-text"></p>
         <p class="inv4 inv-text"></p>
+      </div>
+      <div id="side-items-container">
+
       </div>
     </div>
   </div>

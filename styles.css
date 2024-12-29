@@ -7,106 +7,114 @@
 body {
   background-color: rgb(61, 57, 57);
   color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Poppins', 'sans-serif';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.lupin {
+#title,
+#subtitle {
   text-align: center;
+}
+#title {
   font-size: 6rem;
   margin-top: 10vh;
 }
-.game-container {
-  border: 5px solid black;
-  background-color: black;
-  margin: 0 auto;
-  max-width: 720px;
-  display:block;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 10vh;
-  text-align: center;
-  width: 100%;
-  height: 63vh;
+#subtitle {
+  font-size: 2rem;
+  margin-bottom: 50px;
+  text-decoration: underline;
+  text-underline-offset: 10px;
 }
-.status-bar {
+#game-container {
+  border-radius: 25px;
+  border: 5px solid rgb(164, 156, 156);
+  background-color: black;
+  width: 80vw;
+  max-width: 700px;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#confidence-container {
+   margin: 10px 0 0 0; 
+  }
+#status-bar {
   max-width: 500px;
-  /* border: 3px solid rgb(168, 63, 63); */
   display: none;
-  text-align: center;  justify-content: flex-start;
   gap: 60px;
   background-color: white;
-  padding-left: 10px;
-  margin: 15px auto;
+  padding: 5px 10px;
   color: black;
-  width: 50%;
-  position: relative;
+  margin: 15px 0;
 }
-.play-buttons {
-  max-width: 500px;
+#play-buttons-container {
+  max-width: 600px;
   /* border: 3px solid rgb(168, 63, 63); */
   height: 10vh;
   width: 75%;
-  position: relative;
-  margin: 0 auto;
   display: none;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 .play-btn {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgb(23, 20, 20);
-  font-weight: 700;
-  border: 2px solid white;
-  border-radius: 10%;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
   max-width: 500px;
   margin: 5px;
-  height: 30px;
+  height: 50px;
   width: 100px;
 }
 .input {
   width: 300px;
-  height: 30px;
+  height: 50px;
   border: none;
   border-radius: 5px;
   padding-left: 10px;
+  font-size: 25px;
 }
-.submit {
-border: none;
-width: 70px;
-height: 30px;
-margin-left: 10px;
-border-radius: 15%;
-}
-.hideout {
-border-radius: 15%;
-width: 150px;
-display: none;
-}
-.quit {
+#submit {
   border: none;
-  border-radius: 15%;
-  width: 70px;
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 25px;
+  font-size: 20px;
+  }
+#hideout {
+  margin-bottom: 10px;
+}
+#hideout,
+#quit-button {
+  border: none;
+  border-radius: 10px;
   height: 30px;
-  display: none;  
-}
+  width: 150px;
+  display: none;
+  }
 .text-display {
+  text-align: center;
   background-color: rgb(164, 156, 156);
-  /* border: 3px solid rgb(168, 63, 63); */
-  height: 15vh;
-  margin: 1rem;
-  padding: 1rem;
+  border-radius: 25px;
+  width: 90%;
+  height: 250px;
+  margin: 40px 0 15px 0;
+  padding: 15px;
 }
-.inventory {
-  /* border: 3px solid rgb(168, 63, 63); */
+#inventory {
   height: 20vh;
   width: 40%;
   margin: 0 auto;
   text-align: center;
 }
-.inventory-text {
+#inventory-text {
+  border-radius: 25px;
   background-color: rgb(164, 156, 156);
   height: 17vh;
-  margin-top: .8rem;
+  margin-top: 15px;
   font-size: 1.8rem;
   display: block;
   flex-wrap: wrap;

@@ -1,6 +1,6 @@
 let euros = 1000;
 let days = 0;
-let daysLeft = 11;
+let daysLeft = 10;
 // Confidence is the ability to comeplete risky tasks
 // We need 150 confidence to complete the saxophone heist 
 let confidence = 0;
@@ -8,9 +8,9 @@ let confidence = 0;
 
 let inventory = [];
 
-const eurosStatus = document.querySelector('.euros');
-const daysStatus = document.querySelector('.days');
-const daysLeftStatus = document.querySelector('.days-left');
+// const eurosStatus = document.querySelector('.euros');
+// const daysStatus = document.querySelector('.days');
+// const daysLeftStatus = document.querySelector('.days-left');
 const btn1 = document.querySelector('.btn1');
 const btn2 = document.querySelector('.btn2');
 const btn3 = document.querySelector('.btn3');
@@ -19,17 +19,17 @@ const btn5 = document.querySelector('.btn5');
 const btn6 = document.querySelector('.btn6');
 const btn7 = document.querySelector('.btn7');
 const btn8 = document.querySelector('.btn8');
-const allBtn = document.querySelector('.play-buttons');
+const allBtn = document.getElementById('play-buttons-container');
 const mainBtn = document.querySelector('.main-btn');
 const stealBtn = document.querySelector('.steal-btn');
 const inputBar = document.querySelector('.input');
-const submitButton = document.querySelector('.submit');
+const submitButton = document.getElementById('submit');
 const textDisplay = document.querySelector('.text-display')
-const statusBar = document.querySelector('.status-bar')
-const hideout = document.querySelector('.hideout');
-const quitJobSideButton = document.querySelector('.quit');
-const inventoryContainer = document.querySelector('.inventory')
-const inventoryText = document.querySelector('.inventory-text')
+const statusBar = document.getElementById('status-bar')
+const hideout = document.getElementById('hideout');
+const quitJobSideButton = document.getElementById('quit-button');
+const inventoryContainer = document.getElementById('inventory')
+const inventoryText = document.getElementById('inventory-text')
 const inv1 = document.querySelector('.inv1');
 const inv2 = document.querySelector('.inv2');
 const inv3 = document.querySelector('.inv3');
@@ -90,6 +90,7 @@ function hideoutHome() {
   btn6.style.display = 'none';
   btn7.style.display = 'none';
   btn8.style.display = 'none';
+  textDisplay.style.height = '25vh';
   textDisplay.innerText = "You are in your secret hideout in Paris. Here, you can plan your next heist or go complete small tasks, like going to the store to buy supplies. Hint** you can also steal them. But don't get caught ;). Each tasks gains your confidence and tasks become easier. Add items to your inventory by buying them in the store, but you can only carry 3 things at one time. You'll need certain items to perform specific tasks, so think before you buy. There are three ways to get in: As a janitor, a band member, or a potential buyer. Think critically and good luck!";
   btn1.innerHTML = 'Go to store';
   btn2.innerHTML = 'Go to center';
@@ -103,7 +104,8 @@ function hideoutHome() {
   quitJobSideButton.onclick = quitJob;
 }
 function goToStore() {
-  textDisplay.innerHTML = 'You are in the store';
+  textDisplay.innerHTML = 'You are in the store.';
+  textDisplay.style.height = '60px';
   hideout.style.display = 'inline';
   quitJobSideButton.style.display = 'inline';
   btn1.innerHTML = 'Wig 10';
@@ -158,6 +160,9 @@ function buyWig() {
     confidence += 10;
     displayConfidence();
     euros -= 10;
+    days += .5;
+    daysLeft -= .5;
+    updateStatus();
     eurosStatus.innerText = `Euros: ${euros}`
     inv1.style.display = 'block';
     inv1.innerText = 'Wig';
@@ -167,7 +172,7 @@ function buyWig() {
   } else if (euros < wig) {
     textDisplay.innerText = 'You need to go find some money... Or just steal the wig, but I hope you have the confidence to pull it off. ;)';
   } if (inventory.length >= 3) {
-    textDisplay.innerText = "You can't get anything else. Sorry.";
+    textDisplay.innerText = "You can't hold anything else. Your bag is full.";
     mainBtn.onclick = hideoutHome;
     stealBtn.onclick = hideoutHome;
   }
@@ -189,10 +194,12 @@ function buyClothes() {
   const janitorClothes = 50
   if (!inventory.includes('Janitor Clothes') && euros >= janitorClothes && inventory.length < 3) {
     inventory.push('Janitor Clothes');
-    confidence += 20;
+    confidence += 50;
     displayConfidence();
     euros -= 50;
-    eurosStatus.innerText = `Euros: ${euros}`
+    days += .5;
+    daysLeft -= .5;
+    updateStatus();
     textDisplay.innerText = 'Nice, you got the uniform! Hope it comes in handy';
     inv2.style.display = 'block';
     inv2.innerText = 'Janitor Clothes';
@@ -224,10 +231,12 @@ function buySuit() {
   const suit = 50
   if (!inventory.includes('Suit') && euros >= suit && inventory.length < 3) {
     inventory.push('Suit');
-    confidence += 20;
+    confidence += 50;
     displayConfidence();
     euros -= 50;
-    eurosStatus.innerText = `Euros: ${euros}`
+    days += .5;
+    daysLeft -= .5;
+    updateStatus();
     textDisplay.innerText = 'You clean up very nice, sir. That is a fine suit.';
     inv3.style.display = 'block';
     inv3.innerText = 'Suit';
@@ -259,10 +268,12 @@ function buySax() {
   const sax = 250
   if (!inventory.includes('Saxophone') && euros >= sax && inventory.length < 3) {
     inventory.push('Saxophone');
-    confidence += 50;
+    confidence += 150;
     displayConfidence();
     euros -= 250;
-    eurosStatus.innerText = `Euros: ${euros}`
+    days += .5;
+    daysLeft -= .5;
+    updateStatus();
     textDisplay.innerText = "You're going to need a lot of practice to make that thing sound good.";
     inv4.style.display = 'block';
     inv4.innerText = 'Saxophone';
@@ -308,12 +319,18 @@ function lowChance() {
       allBtn.style.display = 'none';
       confidence += 40;
       displayConfidence();
+      days += .5;
+      daysLeft -= .5;
+      updateStatus();
       return result = true;
     } else if (chances > 8) {
       textDisplay.innerText = "Wow, you idiot. You got caught."
       allBtn.style.display = 'none';
       confidence -= 20;
       displayConfidence();
+      days += .5;
+      daysLeft -= .5;
+      updateStatus();
       return result = false;
   };
 };
@@ -324,12 +341,18 @@ function mediumChance() {
       allBtn.style.display = 'none';
       confidence += 50;
       displayConfidence();
+      days += .5;
+      daysLeft -= .5;
+      updateStatus();
       return result = true;
     } else if (chances > 8) {
       textDisplay.innerText = "Wow, you idiot. You got caught."
       allBtn.style.display = 'none';
       confidence -= 50;
       displayConfidence();
+      days += .5;
+      daysLeft -= .5;
+      updateStatus();
       return result = false;
   };
 };
@@ -340,12 +363,18 @@ function highChance() {
       allBtn.style.display = 'none';
       confidence += 100;
       displayConfidence();
+      days += .5;
+      daysLeft -= .5;
+      updateStatus();
       return result = true;
     } else if (chances > 8) {
       textDisplay.innerText = "Wow, you idiot. You got caught."
       allBtn.style.display = 'none';
       confidence -= 100;
       displayConfidence();
+      days += .5;
+      daysLeft -= .5;
+      updateStatus();
       return result = false;
     } 
 }
@@ -368,6 +397,13 @@ function quitJob() {
   statusBar.style.display = 'none';
   allBtn.style.display = 'none';
   textDisplay.innerText = 'I hope you understand that quitting means trying your luck with DEATH. Surely you can run, but we WILL find you.'
+}
+function updateStatus() {
+  statusBar.innerHTML = `
+      <p class="euros">Euros: ${euros}</p>
+      <p class="days">Days: ${days}</p>
+      <p class="days-left">Days left: ${daysLeft}</p>
+  `
 }
 function displayConfidence() {
   confidenceContainer.innerHTML = `Confidence: ${confidence}`
