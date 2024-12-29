@@ -23,11 +23,6 @@ const mainBtn = document.querySelector('.main-btn');
 const stealBtn = document.querySelector('.steal-btn');
 const inputBar = document.querySelector('.input');
 const submitButton = document.querySelector('.submit');
-  inputBar.addEventListener('keyup', (e) => {
-    if (e.keycode === 13) {
-      console.log(e.target.value);
-    }
-  })
 const textDisplay = document.querySelector('.text-display')
 const statusBar = document.querySelector('.status-bar')
 const hideout = document.querySelector('.hideout');
@@ -38,42 +33,51 @@ const inv2 = document.querySelector('.inv2');
 const inv3 = document.querySelector('.inv3');
 const inv4 = document.querySelector('.inv4');
 
-// Start Game
 
-submitButton.onclick = startGame;
+
+submitButton.addEventListener("click", startGame);
 function startGame() {
-
-  
-  // let entries = [];
-
-  // for (i = 0; i < 3; i++) {
-  //   let entry = entries[i];
-    if (inputBar.value === 'Yes I accept') {
-    textDisplay.innerText = "I knew you would say yes... Ok, this is what I need... We're looking to aquire John Coltrane's Saxophone. Reply, 'Ok' for more details";
+  if (
+    inputBar.value == 'Yes I accept' ||
+    inputBar.value == 'yes I accept' ||
+    inputBar.value == 'Yes' ||
+    inputBar.value == 'yes' ||
+    inputBar.value == 'Yes i accept' ||
+    inputBar.value == 'yes i accept') {
+    acceptance();
     inputBar.value = '';
-        } else if (inputBar.value === '') {
-    textDisplay.innerText = 'Type something please';
-        } else {
-    textDisplay.innerText = "That doesn't make sense.";
-        } 
-    if (inputBar.value === 'Ok') {
-    textDisplay.innerText = "SO... Here are the details. John Coltrane's saxophone is sitting in the owner's office of Jo's Jazz Club. I have a buyer and I need you to get it for me before the purchase date. I don't care how you do it but don't damage anything on the saxophone. Once you have it, leave it at the footsteps of the Ministry Hall. A failure will never be forgotten. That is all. Type '251' to begin.";
-        }
-    if (inputBar.value === '251') {
-    hideoutHome();
-    inputBar.value = '';
-        }
-    // I'm trying to add a limit of tries. I think I need a for loop but I'm not sure 
-//   } else if (entries.length > 3 && inputBar.value !== 'Yes I accept') {
-//     textDisplay.innerText = "I'll find someone else to do the job. Thank you, Lupin"; 
-//   // }
-// }
-  // console.log(entries);
-
+    } else if (inputBar.value == '') {
+      textDisplay.innerText = 'Type something please'
+      openingStatement();
+      inputBar.value = '';
+    } else {
+      textDisplay.innerText = "That doesn't make sense.";
+      openingStatement();
+      inputBar.value = '';
+  };
+};
+function openingStatement() {
+   setTimeout(function () { 
+        textDisplay.innerText = `Hello, Lupin. I am The Autumn Leaves, The Blue in Green, The Witchcraft... and I have been watching you. I've seen you grow from stealing wallets on the train to slithering your way into the Turdeu Jewelry House, pocketting the historic 50-carot Patience diamond just 2 weeks ago. They still have no clue they are displaying 10 grams of glass. But my message reaches you for this important matter. I need you to steal something for me, and there is no one in France that possess your skills. If you accept, reply, "Yes I accept"`
+       }, 3000);
+}
+function acceptance() {
+  textDisplay.innerText = "I knew you would say yes... Ok, this is what I need... We're looking to aquire John Coltrane's Saxophone. Click 'NEXT' for more details";
+  submitButton.innerHTML = 'NEXT';
+  submitButton.removeEventListener("click", startGame);
+  submitButton.addEventListener("click", details);
+  inputBar.value = '';
+};
+function details() {
+  textDisplay.innerText = "SO... Here are the details. John Coltrane's saxophone is sitting in the owner's office of Jo's Jazz Club. I have a buyer and I need you to get it for me before the purchase date. I don't care how you do it but don't damage anything on the saxophone. Once you have it, leave it at the footsteps of the Ministry Hall. A failure will never be forgotten. That is all. Click 'NEXT' to begin.";
+  submitButton.innerHTML = 'NEXT';
+  submitButton.removeEventListener("click", details);
+  submitButton.addEventListener("click", hideoutHome);
+  inputBar.value = '';
 }
 
 function hideoutHome() {
-  daysLeft--;
+  inputBar.value = '';
   hideout.style.display = 'none';
   statusBar.style.display = 'flex';
   quitJobSideButton.style.display = 'inline';

@@ -62,13 +62,18 @@ body {
   margin: 5px;
   height: 30px;
   width: 100px;
-  /* display: none; */
 }
-/* .steal-btn {
-  display: none;
-} */
+.input {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
 .submit {
+border: none;
 width: 70px;
+height: 30px;
 margin-left: 10px;
 border-radius: 15%;
 }
