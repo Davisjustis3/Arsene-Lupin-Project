@@ -31,14 +31,15 @@ body {
   border: 5px solid rgb(164, 156, 156);
   background-color: black;
   width: 80vw;
+  height: auto;
   max-width: 700px;
-  height: 85vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 100px;
 }
 #confidence-container {
-   margin: 10px 0 0 0; 
+   margin: 15px 0 0 0; 
   }
 #status-bar {
   max-width: 500px;
@@ -51,12 +52,11 @@ body {
 }
 #play-buttons-container {
   max-width: 600px;
-  /* border: 3px solid rgb(168, 63, 63); */
-  height: 10vh;
   width: 75%;
   display: none;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
 }
 .play-btn {
   color: rgb(23, 20, 20);
@@ -64,7 +64,6 @@ body {
   border: none;
   border-radius: 10px;
   max-width: 500px;
-  margin: 5px;
   height: 50px;
   width: 100px;
 }
@@ -81,6 +80,7 @@ body {
   width: 150px;
   height: 50px;
   margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 25px;
   font-size: 20px;
   }
@@ -99,13 +99,13 @@ body {
   text-align: center;
   background-color: rgb(164, 156, 156);
   border-radius: 25px;
-  width: 90%;
-  height: 250px;
-  margin: 40px 0 15px 0;
+  width: 75%;
+  max-width: 600px;
+  margin: 15px 0 15px 0;
   padding: 15px;
+  overflow-y: scroll;
 }
 #inventory {
-  height: 20vh;
   width: 40%;
   text-align: center;
 }
@@ -113,7 +113,7 @@ body {
   border-radius: 25px;
   background-color: rgb(164, 156, 156);
   height: 17vh;
-  margin-top: 15px;
+  margin: 15px 0 15px 0;
   font-size: 1.6rem;
   display: block;
   overflow-y: scroll;

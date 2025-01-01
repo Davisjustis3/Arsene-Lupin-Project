@@ -40,7 +40,7 @@ function buyWig() {
   } else if (euros < wig) {
     textDisplay.innerText = 'You need to go find some money... Or just steal the wig, but I hope you have the confidence to pull it off. ;)';
   } if (inventory.length >= 4) {
-    textDisplay.innerText = "You can't hold anything else. Your bag is full.";
+    textDisplay.innerText = "Your bag is full.";
     mainBtn.onclick = hideoutHome;
     stealBtn.onclick = hideoutHome;
   }
@@ -72,7 +72,7 @@ function buyClothes() {
     textDisplay.innerText = 'You need to go find some money... Or just steal the uniform, but I hope you have the confidence to pull it off. ;)';
   };
   if (inventory.length >= 4) {
-    textDisplay.innerText = "You can't get anything else. Sorry.";
+    textDisplay.innerText = "Your bag is full.";
     mainBtn.onclick = hideoutHome;
     stealBtn.onclick = hideoutHome;
   };
@@ -84,10 +84,10 @@ function stealClothes() {
     if (result) {
       inventory.push('Janitor CLothes');
       displayInventory();
-    } else if (inventory.includes('Janitor Clothes') || inventory.length == 4) {
-      textDisplay.innerText = "You've got a full bag. Do something else!";
+    } 
+  }else if (inventory.includes('Janitor Clothes') || inventory.length == 4) {
+      textDisplay.innerText = "Your bag is full.";
     };
-  };
 };
 function buySuit() {
   const suit = 50
@@ -103,8 +103,8 @@ function buySuit() {
   } else if (euros < suit) {
     textDisplay.innerText = 'You need to go find some money... Or just steal the suit, but I hope you have the confidence to pull it off. ;)';
   } 
-  if (inventory.length >= 4) {
-    textDisplay.innerText = "You can't get anything else. Sorry.";
+  if (inventory.length == 4) {
+    textDisplay.innerText = "Your bag is full.";
     mainBtn.onclick = hideoutHome;
     stealBtn.onclick = hideoutHome;
   };
@@ -135,21 +135,21 @@ function buySax() {
   } else if (euros < sax) {
     textDisplay.innerText = 'You need to go find some money... Or just steal the sax, but I hope you have the confidence to pull it off. ;)';
   } 
-  if (inventory.length >= 4) {
-    textDisplay.innerText = "You can't get anything else. Sorry.";
+  if (inventory.length == 4) {
+    textDisplay.innerText = "Your bag is full.";
     mainBtn.onclick = hideoutHome;
     stealBtn.onclick = hideoutHome;
   }
 }
 function stealReplacementSax() {
   hideout.onclick = hideoutHome;
-  if (!inventory.includes('Sax') && inventory.length < 4) {
+  if (!inventory.includes('Saxophone') && inventory.length < 4) {
     stealIt();
     if (result) {
-      inventory.push('Sax');
+      inventory.push('Saxophone');
       displayInventory();
     }
-  } else if (inventory.includes('Sax') || inventory.length == 4) {
+  } else if (inventory.includes('Saxophone') || inventory.length == 4) {
     textDisplay.innerText = "I'm blown away by your ambition, but be SMART ya dummy. Go somewhere else.";
   } 
 }

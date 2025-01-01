@@ -2,7 +2,7 @@
  function goToCenter() {
   renderTopRowButtons();
   removeSecondRowButtons();
-  textDisplay.innerHTML = "You're in the 'streets' of Paris and need to make some quick cash and get proper materials for the heist. Be careful of what you purchase. Some job paths require certain things while others don't.";
+  textDisplay.innerHTML = "You're in the 'streets' of Paris and need to make some quick cash and get proper materials for the heist. Be careful of what you do and what you purchase. Some job paths require certain things while others don't.";
   hideout.onclick = hideoutHome;
   hideout.style.display = 'inline';
   quitJobSideButton.style.display = 'inline';
